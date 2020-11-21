@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 public class FileUtils {
     public static void folderFind(String path,ArrayList<String> src,ArrayList<String> test){
-        //System.out.println(path);
+        //找到src与test的所有文件
         File file = new File(path);
         System.out.println(file.getName());
         if(file.exists()){
@@ -16,7 +16,7 @@ public class FileUtils {
                 File testFile = null;
                 File srcFile = null;
                 for(File f:list){
-                    //System.out.println(f.getName());
+                    //找到test与src的文件夹
                     if(f.getName().equals("test-classes")){
                         testFile = f;
                     }
@@ -43,6 +43,7 @@ public class FileUtils {
             }
         }
     }
+    //对于文件夹的递归读取，获取所有文件
     public static void readDir(File Dir,ArrayList<String> arrayList){
         File[] files = Dir.listFiles();
         if(files != null){

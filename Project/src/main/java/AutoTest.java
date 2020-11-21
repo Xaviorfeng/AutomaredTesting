@@ -1,7 +1,7 @@
 import java.util.*;
 public class AutoTest {
     public static void main(String[] args){
-        HashSet<String> result = start(args);
+        HashSet<String> result = start(args); //进入代码真正开始的接口
         assert result!=null;
         StringBuilder stringBuilder = new StringBuilder();
         for(String s:result){
@@ -18,6 +18,7 @@ public class AutoTest {
         if(args[0]=="-c") selector.init(true);
         if(args[0]=="-m") selector.init(false);
 
+        //获取src文件，与test文件的所有文件
         FileUtils.folderFind(args[1],src,test);
         for(String path:test){
             selector.addScope(path);

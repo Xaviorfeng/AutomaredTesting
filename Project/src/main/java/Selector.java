@@ -57,10 +57,12 @@ public class Selector {
         HashSet<Node> vis = new HashSet<Node>();
         while (!queue.isEmpty()) {
             Node head = queue.poll();
+            //防止因为图中的环，陷入死循环
             if(vis.contains(head)) continue;
             vis.add(head);
             if (graph.containsKey(head)) {
                 queue.addAll(graph.get(head));
+                //对于类，测试依赖该（类以及依赖该类的类）
                 if(CM){
                     for (Node node : graph.get(head)) {
                         if (testGraph.containsKey(node)){
@@ -72,6 +74,7 @@ public class Selector {
                         }
                     }
                 }
+                //对于方法，测试所有依赖该方法的方法
                 else{
                     for (Node node : graph.get(head)) {
                         if (testGraph.containsKey(node) && node.IsTest())
