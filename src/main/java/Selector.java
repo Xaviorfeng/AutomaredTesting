@@ -54,8 +54,11 @@ public class Selector {
                 if(change.methodChange.contains(str2)) queue.add(key);
             }
         }
+        HashSet<Node> vis = new HashSet<Node>();
         while (!queue.isEmpty()) {
             Node head = queue.poll();
+            if(vis.contains(head)) continue;
+            vis.add(head);
             if (graph.containsKey(head)) {
                 queue.addAll(graph.get(head));
                 if(CM){
